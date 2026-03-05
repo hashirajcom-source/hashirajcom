@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lembaga Pendidikan Bahasa - Profesional</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Academy Japan - Professional Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #004a99;
-            --secondary: #f0f7ff;
-            --text-dark: #1a1a1a;
-            --text-light: #666666;
-            --border-color: #e1e8f0;
-            --wa-green: #25d366;
-            --accent-jp: #d90429; /* Deep Red untuk aksen minimalis */
+            --primary: #0056b3;
+            --secondary: #f8fbff;
+            --text-main: #2d3436;
+            --text-sub: #636e72;
+            --border: #edf2f7;
+            --accent: #d90429;
+            --grad-blue: linear-gradient(135deg, #0056b3 0%, #00a8ff 100%);
+            --grad-wa: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            --grad-ig: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            --grad-tt: linear-gradient(135deg, #000000 0%, #25f4ee 50%, #fe2c55 100%);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-main);
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: #fcfcfc;
         }
 
         /* --- Navigation --- */
@@ -34,271 +33,218 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 8%;
-            background: #fff;
-            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 8%;
+            background: rgba(255,255,255,0.95);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--primary);
-        }
+        .logo-container { display: flex; align-items: center; gap: 10px; }
+        .logo-img { width: 35px; height: 35px; border-radius: 4px; object-fit: cover; }
+        .logo-text { font-weight: 700; font-size: 1.1rem; color: var(--primary); letter-spacing: -0.5px; }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-left: 2rem;
+            color: var(--text-sub);
+            font-size: 0.85rem;
             font-weight: 500;
-            transition: color 0.3s;
+            margin-left: 1.5rem;
+            transition: 0.3s;
         }
-
         .nav-links a:hover { color: var(--primary); }
 
-        /* --- Info / Hero Section --- */
-        .info-header {
-            padding: 5rem 8% 3rem;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .info-header span {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.75rem;
-            color: var(--accent-jp);
-            font-weight: 700;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .info-header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .info-header p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
+        /* --- Hero Section --- */
+        .hero { padding: 6rem 8% 4rem; text-align: center; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; color: var(--primary); }
+        .hero p { color: var(--text-sub); max-width: 600px; margin: 0 auto; }
 
         /* --- Pricing Section --- */
-        .pricing-section {
-            padding: 4rem 8%;
-            background: var(--secondary);
-        }
-
-        .grid-container {
+        .section-padding { padding: 4rem 8%; }
+        .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
-
         .price-card {
             background: #fff;
-            padding: 2.5rem 2rem;
+            padding: 2rem;
             border-radius: 12px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            border: 1px solid var(--border);
+            text-align: center;
         }
-
-        .price-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,74,153,0.08);
-            border-color: var(--primary);
-        }
-
-        .price-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .price-card .amount {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .price-card ul {
-            list-style: none;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-
-        .price-card ul li {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-bottom: 0.75rem;
-            padding-left: 1.2rem;
-            position: relative;
-        }
-
-        .price-card ul li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-        }
-
+        .price-card h3 { font-size: 1rem; margin-bottom: 1rem; }
+        .price-card .price { font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; }
         .btn-wa {
-            background: var(--wa-green);
-            color: #fff;
-            text-align: center;
-            text-decoration: none;
-            padding: 0.8rem;
+            display: block;
+            background: var(--grad-wa);
+            color: white;
+            padding: 0.7rem;
             border-radius: 6px;
-            font-size: 0.85rem;
+            text-decoration: none;
             font-weight: 600;
-            transition: opacity 0.3s;
+            font-size: 0.85rem;
         }
 
-        .btn-wa:hover { opacity: 0.9; }
+        /* --- Detail Information Sections --- */
+        .detail-info { background: var(--secondary); border-top: 1px solid var(--border); }
+        .info-block { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem; }
+        .info-block:nth-child(even) { direction: rtl; }
+        .info-block:nth-child(even) .text-content { direction: ltr; }
+        .info-text h2 { margin-bottom: 1rem; color: var(--primary); }
+        .info-img-dummy { width: 100%; height: 300px; background: #ddd; border-radius: 12px; }
 
-        /* --- Community Section --- */
-        .community-section {
-            padding: 5rem 8%;
-            text-align: center;
-        }
-
-        .social-group {
+        /* --- Community Section (Gradient) --- */
+        .community { text-align: center; background: #fff; }
+        .community-grid {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
         }
-
-        .social-link {
-            padding: 0.75rem 2rem;
-            border-radius: 4px;
+        .social-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            color: white;
             text-decoration: none;
-            font-size: 0.9rem;
             font-weight: 600;
-            color: #fff;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
+        .social-btn:hover { transform: translateY(-5px); }
+        .wa-grad { background: var(--grad-wa); }
+        .ig-grad { background: var(--grad-ig); }
+        .tt-grad { background: var(--grad-tt); }
 
-        .wa-link { background: #075e54; }
-        .tt-link { background: #000; }
-        .ig-link { background: #c13584; }
-
-        /* --- Extra Feature: Statistics --- */
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            padding: 3rem 8%;
+        /* --- Reviews --- */
+        .reviews { background: var(--secondary); }
+        .review-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .review-item {
             background: #fff;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .stat-item h4 { font-size: 2rem; color: var(--primary); }
-        .stat-item p { font-size: 0.8rem; color: var(--text-light); }
-
-        footer {
             padding: 2rem;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-light);
-            border-top: 1px solid var(--border-color);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
         }
+        .review-item p { font-style: italic; font-size: 0.9rem; margin-bottom: 1rem; }
+        .review-item span { font-weight: 700; color: var(--primary); font-size: 0.8rem; }
+
+        footer { text-align: center; padding: 3rem; font-size: 0.8rem; color: var(--text-sub); border-top: 1px solid var(--border); }
 
         @media (max-width: 768px) {
+            .info-block { grid-template-columns: 1fr; gap: 2rem; }
             .nav-links { display: none; }
-            .info-header h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">ACADEMY.JP</div>
+        <div class="logo-container">
+            <img src="https://via.placeholder.com/50" alt="Logo" class="logo-img">
+            <span class="logo-text">NIHON ACADEMY</span>
+        </div>
         <div class="nav-links">
-            <a href="#info">Informasi</a>
-            <a href="#kelas">Program</a>
+            <a href="#hero">Home</a>
+            <a href="#kelas">Kelas</a>
+            <a href="#kurikulum">Kurikulum</a>
+            <a href="#fasilitas">Fasilitas</a>
+            <a href="#karir">Karir</a>
             <a href="#komunitas">Komunitas</a>
         </div>
     </nav>
 
-    <section id="info" class="info-header">
-        <span>Kualitas Pendidikan Standar Global</span>
-        <h1>Kuasai Bahasa Jepang Dengan Kurikulum Terstruktur.</h1>
-        <p>Program intensif yang dirancang untuk mempercepat pemahaman tata bahasa, kanji, dan percakapan bisnis secara profesional.</p>
+    <section id="hero" class="hero">
+        <h1>Pendidikan Terarah, Masa Depan Cerah.</h1>
+        <p>Solusi belajar Bahasa Jepang profesional dengan metode intensif untuk karir dan akademik.</p>
     </section>
 
-    <section class="stats">
-        <div class="stat-item"><h4>1.2k+</h4><p>Alumni Lulus</p></div>
-        <div class="stat-item"><h4>15+</h4><p>Native Sensei</p></div>
-        <div class="stat-item"><h4>98%</h4><p>Passing Rate</p></div>
-    </section>
-
-    <section id="kelas" class="pricing-section">
-        <div class="grid-container">
+    <section id="kelas" class="section-padding">
+        <div class="pricing-grid">
             <div class="price-card">
-                <h3>Level N5 (Basic)</h3>
-                <div class="amount">Rp 450.000</div>
-                <ul>
-                    <li>Pengenalan Hiragana & Katakana</li>
-                    <li>100 Kanji Dasar</li>
-                    <li>Materi PDF & Rekaman</li>
-                </ul>
-                <a href="https://wa.me/628123456789" class="btn-wa">Hubungi Admin</a>
+                <h3>Level N5</h3>
+                <div class="price">Rp 450k</div>
+                <a href="https://wa.me/62812345" class="btn-wa">Chat WhatsApp</a>
             </div>
             <div class="price-card">
-                <h3>Level N4 (Elem)</h3>
-                <div class="amount">Rp 650.000</div>
-                <ul>
-                    <li>300 Kanji Menengah</li>
-                    <li>Percakapan Harian</li>
-                    <li>Tryout JLPT</li>
-                </ul>
-                <a href="https://wa.me/628123456789" class="btn-wa">Hubungi Admin</a>
+                <h3>Level N4</h3>
+                <div class="price">Rp 650k</div>
+                <a href="https://wa.me/62812345" class="btn-wa">Chat WhatsApp</a>
             </div>
             <div class="price-card">
-                <h3>Intensive N3</h3>
-                <div class="amount">Rp 950.000</div>
-                <ul>
-                    <li>Persiapan Kerja Ke Jepang</li>
-                    <li>Native Speaker Session</li>
-                    <li>Sertifikat Eksklusif</li>
-                </ul>
-                <a href="https://wa.me/628123456789" class="btn-wa">Hubungi Admin</a>
+                <h3>Level N3</h3>
+                <div class="price">Rp 950k</div>
+                <a href="https://wa.me/62812345" class="btn-wa">Chat WhatsApp</a>
             </div>
             <div class="price-card">
-                <h3>Private One-on-One</h3>
-                <div class="amount">Rp 1.500.000</div>
-                <ul>
-                    <li>Jadwal Fleksibel</li>
-                    <li>Kurikulum Custom</li>
-                    <li>Konsultasi Karir</li>
-                </ul>
-                <a href="https://wa.me/628123456789" class="btn-wa">Hubungi Admin</a>
+                <h3>Private</h3>
+                <div class="price">Rp 1.5jt</div>
+                <a href="https://wa.me/62812345" class="btn-wa">Chat WhatsApp</a>
             </div>
         </div>
     </section>
 
-    <section id="komunitas" class="community-section">
-        <h2>Gabung Dalam Jaringan Kami</h2>
-        <div class="social-group">
-            <a href="#" class="social-link wa-link">WhatsApp Group</a>
-            <a href="#" class="social-link tt-link">TikTok</a>
-            <a href="#" class="social-link ig-link">Instagram</a>
+    <section id="kurikulum" class="detail-info section-padding">
+        <div class="info-block">
+            <div class="info-text">
+                <h2>Kurikulum Adaptif</h2>
+                <p>Kami menggunakan standar buku terbaru yang disesuaikan dengan kebutuhan ujian JLPT dan percakapan dunia kerja nyata di Jepang.</p>
+            </div>
+            <div class="info-img-dummy"></div>
+        </div>
+    </section>
+
+    <section id="fasilitas" class="section-padding">
+        <div class="info-block">
+            <div class="info-img-dummy"></div>
+            <div class="info-text">
+                <h2>Fasilitas Digital Lengkap</h2>
+                <p>Akses ke portal belajar 24/7, rekaman kelas, dan bank soal latihan digital yang bisa diakses kapan saja dan di mana saja.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="karir" class="detail-info section-padding">
+        <div class="info-block">
+            <div class="info-text">
+                <h2>Dukungan Karir & Studi</h2>
+                <p>Bukan sekadar belajar, kami membantu konsultasi dokumen untuk kamu yang ingin melanjutkan studi ke sekolah bahasa di Tokyo atau Osaka.</p>
+            </div>
+            <div class="info-img-dummy"></div>
+        </div>
+    </section>
+
+    <section id="komunitas" class="community section-padding">
+        <h2>Bergabunglah Dengan Ribuan Pelajar Lainnya</h2>
+        <div class="community-grid">
+            <a href="#" class="social-btn wa-grad">WhatsApp Group</a>
+            <a href="#" class="social-btn ig-grad">Instagram</a>
+            <a href="#" class="social-btn tt-grad">TikTok</a>
+        </div>
+    </section>
+
+    <section class="reviews section-padding">
+        <h2 style="text-align: center; margin-bottom: 3rem;">Review Alumni</h2>
+        <div class="review-container">
+            <div class="review-item">
+                <p>"Metode belajarnya sangat terstruktur. Saya bisa lulus N3 dalam waktu kurang dari setahun berkat bimbingan Sensei yang sangat sabar."</p>
+                <span>— Rian Adityo, Software Engineer</span>
+            </div>
+            <div class="review-item">
+                <p>"Fasilitas portal belajarnya sangat membantu buat saya yang kerja sambil belajar. Sangat profesional dan direkomendasikan!"</p>
+                <span>— Sarah Wijaya, Mahasiswa</span>
+            </div>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 Academy Japan Indonesia. Designed for Professional Education.
+        &copy; 2026 Nihon Academy Indonesia. All Rights Reserved.
     </footer>
 
 </body>
