@@ -89,7 +89,7 @@
             color: var(--text-muted);
         }
 
-        /* --- Feature/Info Section (New) --- */
+        /* --- Feature/Info Section --- */
         .features {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -193,7 +193,7 @@
             background: #002a5a;
         }
 
-        /* --- Social/Community Section --- */
+        /* --- REVISED Community Section (Mobile Friendly & Fixed) --- */
         .community {
             padding: 100px 10%;
             text-align: center;
@@ -203,23 +203,40 @@
         .social-container {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1rem;
             margin-top: 3rem;
+            flex-wrap: wrap; /* Supaya turun ke bawah di HP */
         }
 
-        .social-btn {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
+        .social-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 320px;
+            padding: 1.5rem;
+            border-radius: 16px;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
             font-weight: 700;
-            color: var(--white);
-            font-size: 0.9rem;
-            min-width: 180px;
+            font-size: 1rem;
+            transition: opacity 0.2s ease;
+            color: #fff;
         }
 
-        .wa-btn { background: #25d366; }
-        .tt-btn { background: #000000; }
-        .ig-btn { background: #e1306c; }
+        .social-card:active { opacity: 0.7; } /* Feedback saat ditekan di HP */
+
+        .wa-card { background: #25d366; border-bottom: 4px solid #128c7e; }
+        .tt-card { background: #000000; border-bottom: 4px solid #333333; }
+        .ig-card { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-bottom: 4px solid #8a145d; }
+
+        .social-card span {
+            font-size: 0.8rem;
+            font-weight: 400;
+            display: block;
+            opacity: 0.9;
+        }
 
         /* --- Footer --- */
         footer {
@@ -235,6 +252,7 @@
             .nav-links { display: none; }
             .features { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.2rem; }
+            .social-card { min-width: 100%; } /* Full width di HP */
         }
     </style>
 </head>
@@ -322,12 +340,19 @@
     </section>
 
     <section class="community" id="komunitas">
-        <h2>Bangun Relasi Global</h2>
-        <p>Bergabung dengan 5,000+ pelajar lainnya di ekosistem kami.</p>
+        <h2>Gabung Dalam Jaringan Kami</h2>
+        <p>Akses diskusi materi dan informasi beasiswa terbaru.</p>
+        
         <div class="social-container">
-            <a href="#" class="social-btn wa-btn">WhatsApp Group</a>
-            <a href="#" class="social-btn tt-btn">TikTok</a>
-            <a href="#" class="social-btn ig-btn">Instagram</a>
+            <a href="#" class="social-card wa-card">
+                <div>WhatsApp <span>Grup Diskusi</span></div>
+            </a>
+            <a href="#" class="social-card tt-card">
+                <div>TikTok <span>Tips & Triks</span></div>
+            </a>
+            <a href="#" class="social-card ig-card">
+                <div>Instagram <span>Update Harian</span></div>
+            </a>
         </div>
     </section>
 
