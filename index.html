@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembaga Pendidikan Bahasa - Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #004a99;
+            --secondary: #f0f7ff;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --border-color: #e1e8f0;
+            --wa-green: #25d366;
+            --accent-jp: #d90429; /* Deep Red untuk aksen minimalis */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fcfcfc;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 8%;
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- Info / Hero Section --- */
+        .info-header {
+            padding: 5rem 8% 3rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .info-header span {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            color: var(--accent-jp);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .info-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .info-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* --- Pricing Section --- */
+        .pricing-section {
+            padding: 4rem 8%;
+            background: var(--secondary);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,74,153,0.08);
+            border-color: var(--primary);
+        }
+
+        .price-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-card .amount {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .price-card ul li {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .price-card ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .btn-wa {
+            background: var(--wa-green);
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .btn-wa:hover { opacity: 0.9; }
+
+        /* --- Community Section --- */
+        .community-section {
+            padding: 5rem 8%;
+            text-align: center;
+        }
+
+        .social-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .wa-link { background: #075e54; }
+        .tt-link { background: #000; }
+        .ig-link { background: #c13584; }
+
+        /* --- Extra Feature: Statistics --- */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 3rem 8%;
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item h4 { font-size: 2rem; color: var(--primary); }
+        .stat-item p { font-size: 0.8rem; color: var(--text-light); }
+
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .info-header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ACADEMY.JP</div>
+        <div class="nav-links">
+            <a href="#info">Informasi</a>
+            <a href="#kelas">Program</a>
+            <a href="#komunitas">Komunitas</a>
+        </div>
+    </nav>
+
+    <section id="info" class="info-header">
+        <span>Kualitas Pendidikan Standar Global</span>
+        <h1>Kuasai Bahasa Jepang Dengan Kurikulum Terstruktur.</h1>
+        <p>Program intensif yang dirancang untuk mempercepat pemahaman tata bahasa, kanji, dan percakapan bisnis secara profesional.</p>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item"><h4>1.2k+</h4><p>Alumni Lulus</p></div>
+        <div class="stat-item"><h4>15+</h4><p>Native Sensei</p></div>
+        <div class="stat-item"><h4>98%</h4><p>Passing Rate</p></div>
+    </section>
+
+    <section id="kelas" class="pricing-section">
+        <div class="grid-container">
+            <div class="price-card">
+                <h3>Level N5 (Basic)</h3>
+                <div class="amount">Rp 450.000</div>
+                <ul>
+                    <li>Pengenalan Hiragana & Katakana</li>
+                    <li>100 Kanji Dasar</li>
+                    <li>Materi PDF & Rekaman</li>
+                </ul>
+                <a href="https://wa.me/628123456789" class="btn-wa">Hubungi Admin</a>
+            </div>
+            <div class="price-card">
+                <h3>Level N4 (Elem)</h3>
+                <div class="amount">Rp 650.000</div>
+                <ul>
+                    <li>300 Kanji Menengah</li>
+                    <li>Percakapan Harian</li>
+                    <li>Tryout JLPT</li>
+                </ul>
+                <a href="https://wa.me/628123456789" class="btn-wa">Hubungi Admin</a>
+            </div>
+            <div class="price-card">
+                <h3>Intensive N3</h3>
+                <div class="amount">Rp 950.000</div>
+                <ul>
+                    <li>Persiapan Kerja Ke Jepang</li>
+                    <li>Native Speaker Session</li>
+                    <li>Sertifikat Eksklusif</li>
+                </ul>
+                <a href="https://wa.me/628123456789" class="btn-wa">Hubungi Admin</a>
+            </div>
+            <div class="price-card">
+                <h3>Private One-on-One</h3>
+                <div class="amount">Rp 1.500.000</div>
+                <ul>
+                    <li>Jadwal Fleksibel</li>
+                    <li>Kurikulum Custom</li>
+                    <li>Konsultasi Karir</li>
+                </ul>
+                <a href="https://wa.me/628123456789" class="btn-wa">Hubungi Admin</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="komunitas" class="community-section">
+        <h2>Gabung Dalam Jaringan Kami</h2>
+        <div class="social-group">
+            <a href="#" class="social-link wa-link">WhatsApp Group</a>
+            <a href="#" class="social-link tt-link">TikTok</a>
+            <a href="#" class="social-link ig-link">Instagram</a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Academy Japan Indonesia. Designed for Professional Education.
+    </footer>
+
+</body>
+</html>
