@@ -3,248 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academy Japan - Professional Education</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Pendidikan Bahasa Jepang Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0056b3;
-            --secondary: #f8fbff;
-            --text-main: #2d3436;
-            --text-sub: #636e72;
-            --border: #edf2f7;
-            --accent: #d90429;
-            --grad-blue: linear-gradient(135deg, #0056b3 0%, #00a8ff 100%);
-            --grad-wa: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-            --grad-ig: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            --grad-tt: linear-gradient(135deg, #000000 0%, #25f4ee 50%, #fe2c55 100%);
+            --primary-blue: #003d82;
+            --soft-blue: #f4f9ff;
+            --accent-red: #d90429;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text-main);
-            line-height: 1.6;
+            background-color: var(--white);
+            line-height: 1.7;
         }
 
-        /* --- Navigation --- */
+        /* --- Navigation (Top Right) --- */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 8%;
-            background: rgba(255,255,255,0.95);
-            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 10%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid var(--border);
         }
 
-        .logo-container { display: flex; align-items: center; gap: 10px; }
-        .logo-img { width: 35px; height: 35px; border-radius: 4px; object-fit: cover; }
-        .logo-text { font-weight: 700; font-size: 1.1rem; color: var(--primary); letter-spacing: -0.5px; }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-sub);
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-left: 1.5rem;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            font-weight: 600;
             transition: 0.3s;
         }
-        .nav-links a:hover { color: var(--primary); }
 
-        /* --- Hero Section --- */
-        .hero { padding: 6rem 8% 4rem; text-align: center; }
-        .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; color: var(--primary); }
-        .hero p { color: var(--text-sub); max-width: 600px; margin: 0 auto; }
-
-        /* --- Pricing Section --- */
-        .section-padding { padding: 4rem 8%; }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
+        .nav-links a:hover {
+            color: var(--primary-blue);
         }
-        .price-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
+
+        /* --- Hero / Info Header --- */
+        .hero {
+            padding: 100px 10% 60px;
             text-align: center;
         }
-        .price-card h3 { font-size: 1rem; margin-bottom: 1rem; }
-        .price-card .price { font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; }
-        .btn-wa {
-            display: block;
-            background: var(--grad-wa);
-            color: white;
-            padding: 0.7rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
         }
 
-        /* --- Detail Information Sections --- */
-        .detail-info { background: var(--secondary); border-top: 1px solid var(--border); }
-        .info-block { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem; }
-        .info-block:nth-child(even) { direction: rtl; }
-        .info-block:nth-child(even) .text-content { direction: ltr; }
-        .info-text h2 { margin-bottom: 1rem; color: var(--primary); }
-        .info-img-dummy { width: 100%; height: 300px; background: #ddd; border-radius: 12px; }
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
 
-        /* --- Community Section (Gradient) --- */
-        .community { text-align: center; background: #fff; }
-        .community-grid {
+        /* --- Feature/Info Section (New) --- */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 60px 10%;
+            background-color: var(--white);
+        }
+
+        .feat-item {
+            padding: 2rem;
+            border-left: 3px solid var(--primary-blue);
+            background: var(--soft-blue);
+        }
+
+        .feat-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .feat-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Pricing Section --- */
+        .pricing-wrap {
+            padding: 100px 10%;
+            background-color: var(--soft-blue);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .price-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .price-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-card h3 {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .price-card .price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+        }
+
+        .price-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2.5rem;
+        }
+
+        .price-card ul li {
+            padding: 0.6rem 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .btn-wa {
+            display: block;
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .btn-wa:hover {
+            background: #002a5a;
+        }
+
+        /* --- Social/Community Section --- */
+        .community {
+            padding: 100px 10%;
+            text-align: center;
+            background: var(--white);
+        }
+
+        .social-container {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
-            margin-top: 2.5rem;
-            flex-wrap: wrap;
+            margin-top: 3rem;
         }
+
         .social-btn {
             padding: 1rem 2.5rem;
             border-radius: 50px;
-            color: white;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
+            color: var(--white);
             font-size: 0.9rem;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-width: 180px;
         }
-        .social-btn:hover { transform: translateY(-5px); }
-        .wa-grad { background: var(--grad-wa); }
-        .ig-grad { background: var(--grad-ig); }
-        .tt-grad { background: var(--grad-tt); }
 
-        /* --- Reviews --- */
-        .reviews { background: var(--secondary); }
-        .review-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .review-item {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary);
-        }
-        .review-item p { font-style: italic; font-size: 0.9rem; margin-bottom: 1rem; }
-        .review-item span { font-weight: 700; color: var(--primary); font-size: 0.8rem; }
+        .wa-btn { background: #25d366; }
+        .tt-btn { background: #000000; }
+        .ig-btn { background: #e1306c; }
 
-        footer { text-align: center; padding: 3rem; font-size: 0.8rem; color: var(--text-sub); border-top: 1px solid var(--border); }
+        /* --- Footer --- */
+        footer {
+            padding: 40px 10%;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
 
         @media (max-width: 768px) {
-            .info-block { grid-template-columns: 1fr; gap: 2rem; }
             .nav-links { display: none; }
+            .features { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-container">
-            <img src="https://via.placeholder.com/50" alt="Logo" class="logo-img">
-            <span class="logo-text">NIHON ACADEMY</span>
-        </div>
+        <div class="logo">EDUCORE.JP</div>
         <div class="nav-links">
-            <a href="#hero">Home</a>
-            <a href="#kelas">Kelas</a>
-            <a href="#kurikulum">Kurikulum</a>
-            <a href="#fasilitas">Fasilitas</a>
-            <a href="#karir">Karir</a>
+            <a href="#info">Tentang Kami</a>
+            <a href="#biaya">Biaya Kelas</a>
             <a href="#komunitas">Komunitas</a>
         </div>
     </nav>
 
-    <section id="hero" class="hero">
-        <h1>Pendidikan Terarah, Masa Depan Cerah.</h1>
-        <p>Solusi belajar Bahasa Jepang profesional dengan metode intensif untuk karir dan akademik.</p>
+    <header class="hero" id="info">
+        <h1>Belajar Bahasa Jepang Secara Terukur.</h1>
+        <p>Kami menyediakan kurikulum berbasis standar JLPT (Japanese Language Proficiency Test) yang disesuaikan dengan ritme belajar Anda.</p>
+    </header>
+
+    <section class="features">
+        <div class="feat-item">
+            <h4>Metode Interaktif</h4>
+            <p>Fokus pada 70% praktik bicara dan 30% penguasaan tata bahasa formal.</p>
+        </div>
+        <div class="feat-item">
+            <h4>Native Sensei</h4>
+            <p>Setiap level didampingi oleh pengajar asli dari Tokyo dan Osaka.</p>
+        </div>
+        <div class="feat-item">
+            <h4>E-Learning 24/7</h4>
+            <p>Akses semua rekaman kelas dan materi PDF kapan saja melalui member area.</p>
+        </div>
     </section>
 
-    <section id="kelas" class="section-padding">
+    <section class="pricing-wrap" id="biaya">
+        <div class="section-title">
+            <h2>Pilihan Investasi Belajar</h2>
+        </div>
+
         <div class="pricing-grid">
             <div class="price-card">
-                <h3>Level N5</h3>
-                <div class="price">Rp 450k</div>
-                <a href="https://wa.me/62812345" class="btn-wa">Chat WhatsApp</a>
+                <h3>LEVEL N5</h3>
+                <div class="price">IDR 450k</div>
+                <ul>
+                    <li>12 Sesi Live Zoom</li>
+                    <li>Modul Hiragana/Katakana</li>
+                    <li>Ujian Kelayakan</li>
+                </ul>
+                <a href="https://wa.me/yournumber" class="btn-wa">Daftar Sekarang</a>
             </div>
+
             <div class="price-card">
-                <h3>Level N4</h3>
-                <div class="price">Rp 650k</div>
-                <a href="https://wa.me/62812345" class="btn-wa">Chat WhatsApp</a>
+                <h3>LEVEL N4</h3>
+                <div class="price">IDR 650k</div>
+                <ul>
+                    <li>16 Sesi Live Zoom</li>
+                    <li>Persiapan JLPT N4</li>
+                    <li>Daily Conversation</li>
+                </ul>
+                <a href="https://wa.me/yournumber" class="btn-wa">Daftar Sekarang</a>
             </div>
+
             <div class="price-card">
-                <h3>Level N3</h3>
-                <div class="price">Rp 950k</div>
-                <a href="https://wa.me/62812345" class="btn-wa">Chat WhatsApp</a>
+                <h3>LEVEL N3</h3>
+                <div class="price">IDR 850k</div>
+                <ul>
+                    <li>20 Sesi Live Zoom</li>
+                    <li>Business Manners</li>
+                    <li>Bimbingan Kerja</li>
+                </ul>
+                <a href="https://wa.me/yournumber" class="btn-wa">Daftar Sekarang</a>
             </div>
+
             <div class="price-card">
-                <h3>Private</h3>
-                <div class="price">Rp 1.5jt</div>
-                <a href="https://wa.me/62812345" class="btn-wa">Chat WhatsApp</a>
+                <h3>PRIVATE</h3>
+                <div class="price">IDR 1.2jt</div>
+                <ul>
+                    <li>1-on-1 Intensif</li>
+                    <li>Jadwal Menyesuaikan</li>
+                    <li>Progress Report Mingguan</li>
+                </ul>
+                <a href="https://wa.me/yournumber" class="btn-wa">Daftar Sekarang</a>
             </div>
         </div>
     </section>
 
-    <section id="kurikulum" class="detail-info section-padding">
-        <div class="info-block">
-            <div class="info-text">
-                <h2>Kurikulum Adaptif</h2>
-                <p>Kami menggunakan standar buku terbaru yang disesuaikan dengan kebutuhan ujian JLPT dan percakapan dunia kerja nyata di Jepang.</p>
-            </div>
-            <div class="info-img-dummy"></div>
-        </div>
-    </section>
-
-    <section id="fasilitas" class="section-padding">
-        <div class="info-block">
-            <div class="info-img-dummy"></div>
-            <div class="info-text">
-                <h2>Fasilitas Digital Lengkap</h2>
-                <p>Akses ke portal belajar 24/7, rekaman kelas, dan bank soal latihan digital yang bisa diakses kapan saja dan di mana saja.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="karir" class="detail-info section-padding">
-        <div class="info-block">
-            <div class="info-text">
-                <h2>Dukungan Karir & Studi</h2>
-                <p>Bukan sekadar belajar, kami membantu konsultasi dokumen untuk kamu yang ingin melanjutkan studi ke sekolah bahasa di Tokyo atau Osaka.</p>
-            </div>
-            <div class="info-img-dummy"></div>
-        </div>
-    </section>
-
-    <section id="komunitas" class="community section-padding">
-        <h2>Bergabunglah Dengan Ribuan Pelajar Lainnya</h2>
-        <div class="community-grid">
-            <a href="#" class="social-btn wa-grad">WhatsApp Group</a>
-            <a href="#" class="social-btn ig-grad">Instagram</a>
-            <a href="#" class="social-btn tt-grad">TikTok</a>
-        </div>
-    </section>
-
-    <section class="reviews section-padding">
-        <h2 style="text-align: center; margin-bottom: 3rem;">Review Alumni</h2>
-        <div class="review-container">
-            <div class="review-item">
-                <p>"Metode belajarnya sangat terstruktur. Saya bisa lulus N3 dalam waktu kurang dari setahun berkat bimbingan Sensei yang sangat sabar."</p>
-                <span>— Rian Adityo, Software Engineer</span>
-            </div>
-            <div class="review-item">
-                <p>"Fasilitas portal belajarnya sangat membantu buat saya yang kerja sambil belajar. Sangat profesional dan direkomendasikan!"</p>
-                <span>— Sarah Wijaya, Mahasiswa</span>
-            </div>
+    <section class="community" id="komunitas">
+        <h2>Bangun Relasi Global</h2>
+        <p>Bergabung dengan 5,000+ pelajar lainnya di ekosistem kami.</p>
+        <div class="social-container">
+            <a href="#" class="social-btn wa-btn">WhatsApp Group</a>
+            <a href="#" class="social-btn tt-btn">TikTok</a>
+            <a href="#" class="social-btn ig-btn">Instagram</a>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 Nihon Academy Indonesia. All Rights Reserved.
+        <div>&copy; 2026 EduCore Japan Indonesia.</div>
+        <div>Standardized Education Systems.</div>
     </footer>
 
 </body>
