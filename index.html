@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashira Japanese Community</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/wTVy85Yj/Desain-tanpa-judul-20260307-090651-0000.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
+        .hero-bg { background: radial-gradient(circle at top right, #e0f2fe, #ffffff, #f0f9ff); }
+        .btn-wa { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); }
+        .btn-tt { background: linear-gradient(135deg, #000000 0%, #333333 100%); border: 1px solid #25F4EE; }
+        .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .card-pro { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card-pro:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        #mobile-menu { transition: all 0.3s ease-in-out; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-item.active .faq-content { max-height: 200px; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900">
+
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="https://i.postimg.cc/T38MCgBM/20230801-223040.jpg" alt="Logo" class="w-10 h-10 rounded-xl object-cover shadow-lg shadow-blue-200">
+                <div class="text-2xl font-extrabold tracking-tighter text-blue-600">HASHIRA<span class="text-slate-800">JCOM</span></div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-10 font-semibold text-sm text-slate-600">
+                <a href="#tentang" class="hover:text-blue-600 transition">Tentang</a>
+                <a href="#testimoni" class="hover:text-blue-600 transition">Ulasan</a>
+                <a href="#kelas" class="hover:text-blue-600 transition">Kelas</a>
+                <a href="#komunitas" class="hover:text-blue-600 transition">Komunitas</a>
+                <a href="https://wa.me/6283195974246" class="bg-blue-600 text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition shadow-lg shadow-blue-200">Contact Person</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-slate-800 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-6 space-y-4 shadow-xl">
+            <a href="#tentang" class="block font-bold text-slate-700 hover:text-blue-600">Tentang</a>
+            <a href="#kelas" class="block font-bold text-slate-700 hover:text-blue-600">Kelas</a>
+            <a href="#testimoni" class="block font-bold text-slate-700 hover:text-blue-600">Ulasan</a>
+            <a href="#komunitas" class="block font-bold text-slate-700 hover:text-blue-600">Komunitas</a>
+            <a href="https://wa.me/6283195974246" class="block text-center bg-blue-600 text-white py-3 rounded-xl font-bold">Contact Person</a>
+        </div>
+    </nav>
+
+    <section class="hero-bg pt-40 pb-20 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                Always Be<br> <span class="text-blue-600">A Beginner</span>
+            </h1>
+            <p class="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10"> - Shunryu Suzuki - 
+            </p>
+                <p>Kami ingin menyediakan layanan belajar yang ramah untuk pemula, cocok untuk kamu yang memulai dari nol,<br> agar tetap nyaman berproses tanpa rasa sungkan.
+            </p>
+                <p>Melalui komunitas ini, kamu bisa memperluas networking dengan sesama pelajar Bahasa Jepang untuk saling berbagi tentang apapun.
+            </p>
+        </div>
+    </section>
+
+    <section id="tentang" class="py-20 px-6 bg-white">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+            <div><div class="text-4xl mb-4">🌐</div><h3 class="text-xl font-bold mb-2">Relationship</h3><p class="text-slate-500 text-sm">- Fusao Himari</p></div>
+            <div><div class="text-4xl mb-4">👤</div><h3 class="text-xl font-bold mb-2">Peoples</h3><p class="text-slate-500 text-sm">1476+ Anggota Komunitas<br>166+ Peserta Kelas<br>5+ Admins</p></div>
+            <div><div class="text-4xl mb-4">📖</div><h3 class="text-xl font-bold mb-2">Discover</h3><p class="text-slate-500 text-sm">Language<br>Culture<br>History</p></div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#f8fafc]">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1 text-center md:text-right">
+                <h3 class="text-2xl font-bold mb-4 text-blue-600">Bahasa Jepang</h3>
+                <p class="text-slate-600 leading-relaxed text-justify indent-8">
+                    Bahasa Jepang adalah bahasa resmi Jepang yang digunakan oleh lebih dari 125 juta penutur dengan struktur kalimat Subjek-Objek-Predikat (SOP) dan sistem tingkat tutur (keigo) yang sangat kompleks untuk menunjukkan rasa hormat.</p>
+                <p class="text-slate-600 leading-relaxed text-justify indent-8">
+                    Keunikan utamanya terletak pada sistem penulisan yang memadukan tiga huruf sekaligus: Kanji (karakter Tiongkok) untuk menyatakan makna atau konsep dasar, Hiragana (huruf melengkung) untuk kata asli Jepang dan fungsi tata bahasa, serta Katakana (huruf bersudut tajam) yang khusus digunakan untuk menulis kata serapan asing, nama luar negeri, dan onomatope.</p>
+                <p class="text-slate-600 leading-relaxed text-justify indent-8">
+                    Kombinasi ketiga alfabet ini, bersama penggunaan huruf Latin (Romaji) dalam konteks modern, menjadikannya salah satu sistem linguistik paling sistematis sekaligus menantang di dunia.
+                </p>
+            </div>
+            
+            <div class="flex-1 flex justify-center">
+                <div class="w-64 md:w-80 aspect-[3/4] overflow-hidden rounded-[2rem] shadow-2xl rotate-3 hover:rotate-0 transition duration-500">
+                    <img src="https://i.postimg.cc/htLmjFmR/Teks-paragraf-Anda-20260307-085611-0000.png" alt="Hashira Activity" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="flex-1 text-center md:text-left">
+                <h3 class="text-2xl font-bold mb-4 text-blue-600">Budaya Jepang</h3>
+                <p class="text-slate-600 leading-relaxed text-justify indent-8">
+                    Budaya Jepang adalah perpaduan unik antara tradisi ribuan tahun yang berakar pada nilai-nilai Shinto dan Buddha dengan inovasi teknologi modern yang sangat maju.</p>
+                <p class="text-slate-600 leading-relaxed text-justify indent-8">
+                    Karakteristik utamanya tecermin dalam prinsip Omotenashi (keramahtamahan sepenuh hati), estetika Wabi-sabi (menghargai ketidaksempurnaan), serta disiplin tinggi yang terlihat dalam seni tradisional seperti upacara minum teh (Sado), merangkai bunga (Ikebana), dan bela diri (Budo).</p>
+                <p class="text-slate-600 leading-relaxed text-justify indent-8">
+                    Di sisi lain, budaya populer Jepang seperti Anime, Manga, dan video game telah menjadi fenomena global yang mendefinisikan identitas Jepang modern sebagai pusat kreativitas dunia yang tetap menjaga keharmonisan sosial dan etika kesopanan yang ketat.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kelas" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-extrabold mb-12 text-center">Pilih Investasi Belajar</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white border border-slate-100 p-8 rounded-[2.5rem] card-pro relative">
+                    <h3 class="text-2xl font-bold mb-2">HJC | KELAS DASAR</h3>
+                    <p class="text-blue-600 font-bold text-lg mb-6">Rp 25.000</p>
+                    <div class="space-y-3 mb-8 text-slate-600 text-sm border-t pt-6">
+                        <p> •  1 Bulan 4× Zoom Meeting </p><p> •  Hiragana & Katakana</p><p> •  Kotoba & Pola Kalimat</p><p> •  Pemahaman Dasar</p>
+                    </div>
+                    <a href="https://wa.me/6283195974246?text=Halo%20min%2C%20Saya%20tertarik%20dengan%20kelas%20Level%20Dasar." class="block text-center bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-blue-600 transition">Daftar</a>
+                </div>
+                <div class="bg-white border-2 border-blue-500 p-8 rounded-[2.5rem] card-pro shadow-2xl shadow-blue-100">
+                    <h3 class="text-2xl font-bold mb-2">HJC | PRIVATE CLASS</h3>
+                    <p class="text-blue-600 font-bold text-lg mb-6">Rp Custom</p>
+                    <div class="space-y-3 mb-8 text-slate-600 text-sm border-t pt-6">
+                        <p> •  Private Zoom</p><p> •  Konsultasi Gratis 24/7</p><p> •  Analisis Progress</p><p> •  Garansi Target</p>
+                    </div>
+                    <a href="https://wa.me/6283195974246?text=Halo%20min%2C%20Saya%20tertarik%20dengan%20kelas%20Privat." class="block text-center bg-blue-600 text-white py-4 rounded-2xl font-bold hover:bg-slate-900 transition">Daftar</a>
+                </div>
+                <div class="bg-white border border-slate-100 p-8 rounded-[2.5rem] card-pro">
+                    <h3 class="text-2xl font-bold mb-2">HJC | KELAS N5</h3>
+                    <p class="text-blue-600 font-bold text-lg mb-6">Rp 120.000</p>
+                    <div class="space-y-3 mb-8 text-slate-600 text-sm border-t pt-6">
+                        <p> •  1 Bulan 8× Zoom  Meeting</p><p> •  Persiapan N5 Lengkap</p><p> •  Konsultasi Gratis</p><p> •  Garansi 1×</p>
+                    </div>
+                    <a href="https://wa.me/6283195974246?text=Halo%20min%2C%20Saya%20tertarik%20dengan%20kelas%20Level%20N5." class="block text-center bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-blue-600 transition">Daftar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimoni" class="py-24 px-6 bg-white">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl font-extrabold mb-4">Kata Mereka Tentang<br>Hashira Japanese Class</h2>
+            <div class="flex items-center justify-center gap-2 mb-12">
+                <span class="text-yellow-400 text-2xl font-bold">4.6</span>
+                <div class="text-yellow-400">★★★★☆</div>
+                <span class="text-slate-400 text-sm font-medium">(8 Ulasan)</span>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 text-left" id="testimonial-container">
+                <div class="p-8 rounded-3xl bg-[#f8fafc] border border-slate-100">
+                    <div class="text-yellow-400 mb-4 text-xl">★★★★★</div>
+                    <p class="text-slate-600 italic mb-6">"bagus dan menarik ,murah dalam pendaftaran,tpi kelasnya setara dengan kelas mahal"</p>
+                    <p class="font-bold text-slate-800">Kelas Dasar</p>
+                    <p class="text-xs text-slate-400">September 2025</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-[#f8fafc] border border-slate-100">
+                    <div class="text-yellow-400 mb-4 text-xl">★★★★★</div>
+                    <p class="text-slate-600 italic mb-6">"Materinya to the point dan tidak bikin ribet dalam memahaminya."</p>
+                    <p class="font-bold text-slate-800">Kelas Dasar</p>
+                    <p class="text-xs text-slate-400">September 2025</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-[#f8fafc] border border-slate-100">
+                    <div class="text-yellow-400 mb-4 text-xl">★★★★★</div>
+                    <p class="text-slate-600 italic mb-6">"aku biasanya bingung karna sambil kerja juga, untung kakanya ada kelas privat jadi jadwalnya enak dan pemahaman lebih mudah, arigatou sensei😊"</p>
+                    <p class="font-bold text-slate-800">Private Class</p>
+                    <p class="text-xs text-slate-400">Oktober 2025</p>
+                </div>
+                
+                <div class="hidden extra-testimonial p-8 rounded-3xl bg-[#f8fafc] border border-slate-100">
+                    <div class="text-yellow-400 mb-4 text-xl">★★★★☆</div>
+                    <p class="text-slate-600 italic mb-6">"senseinya baik, kalo menjelaskan mudah di mengerti, mudah masuk ke otak aku yang lemot inii😭😭materinya mudah di mengerti, cuma aku aja yang ga paham paham, makasih banyak buat sensei nya yg udah mengajar, dan see you next time, kayanya bakal belajar di hjc lagi tapi nunggu agak longgar dikit🥲"</p>
+                    <p class="font-bold text-slate-800">Kelas Dasar</p>
+                    <p class="text-xs text-slate-400">November 2025</p>
+                </div>
+                <div class="hidden extra-testimonial p-8 rounded-3xl bg-[#f8fafc] border border-slate-100">
+                    <div class="text-yellow-400 mb-4 text-xl">★★★★☆</div>
+                    <p class="text-slate-600 italic mb-6">"Walaupun Bayar nya murah,tapi ilmu yang diberikan sangatlah cukup, sesuai dengan dana nya,dan penjelasan nya saya anggap lebih mudah, karena kalau tidak tau,bisa tanya langsung"</p>
+                    <p class="font-bold text-slate-800">Kelas Dasar</p>
+                    <p class="text-xs text-slate-400">November 2025</p>
+                </div>
+                <div class="hidden extra-testimonial p-8 rounded-3xl bg-[#f8fafc] border border-slate-100">
+                    <div class="text-yellow-400 mb-4 text-xl">★★★★★</div>
+                    <p class="text-slate-600 italic mb-6">"Belajar di Hashira Japanese Class sangat membantu saya memahami dasar-dasar bahasa Jepang. Saya jadi tahu huruf Jepang, kosakata, dan cara membuat kalimat. Pelajarannya jelas dan mudah diikuti. ありがとう, Hashira Japanese Class"</p>
+                    <p class="font-bold text-slate-800">Kelas Dasar</p>
+                    <p class="text-xs text-slate-400">September 2025</p>
+                </div>
+                <div class="hidden extra-testimonial p-8 rounded-3xl bg-[#f8fafc] border border-slate-100">
+                    <div class="text-yellow-400 mb-4 text-xl">★★★★☆</div>
+                    <p class="text-slate-600 italic mb-6">"Lgi males ngetik, intinya mantab deh"</p>
+                    <p class="font-bold text-slate-800">Kelas Dasar</p>
+                    <p class="text-xs text-slate-400">September 2025</p>
+                </div>
+                <div class="hidden extra-testimonial p-8 rounded-3xl bg-[#f8fafc] border border-slate-100">
+                    <div class="text-yellow-400 mb-4 text-xl">★★★★☆</div>
+                    <p class="text-slate-600 italic mb-6">"Sangat baik semoga ke depannya lebih baik lagi"</p>
+                    <p class="font-bold text-slate-800">Kelas Dasar</p>
+                    <p class="text-xs text-slate-400">September 2025</p>
+                </div>
+            </div>
+            <button id="show-more-btn" class="mt-12 text-blue-600 font-bold hover:underline flex items-center gap-2 mx-auto">
+                Selengkapnya <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+        </div>
+    </section>
+
+    <section id="komunitas" class="py-24 px-6 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-extrabold mb-6">Bergabung Dengan Kami</h2>
+            <p class="text-slate-400 mb-12 text-lg">Masuk ke ekosistem kami dan mulai bangun koneksimu sekarang.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+                <a href="https://chat.whatsapp.com/InACkTaNFf1Be2QPYwfd2c" target="_blank" class="btn-wa py-5 rounded-3xl font-bold flex items-center justify-center gap-3 hover:scale-105 transition shadow-2xl">WhatsApp</a>
+                <a href="https://www.tiktok.com/@hashirajcom" target="_blank" class="btn-tt py-5 rounded-3xl font-bold flex items-center justify-center gap-3 hover:scale-105 transition shadow-2xl">TikTok</a>
+                <a href="https://www.instagram.com/hashirajcom" target="_blank" class="btn-ig py-5 rounded-3xl font-bold flex items-center justify-center gap-3 hover:scale-105 transition shadow-2xl">Instagram</a>
+            </div>
+
+            <div class="max-w-3xl mx-auto text-left">
+                <h3 class="text-2xl font-bold mb-8 text-center">Pertanyaan Umum (FAQ)</h3>
+                <div class="space-y-4">
+                    <div class="faq-item bg-slate-800/50 rounded-2xl p-6 cursor-pointer border border-slate-700">
+                        <div class="flex justify-between items-center faq-header">
+                            <span class="font-bold">Apakah orang yang belum pernah belajar Bahasa Jepang bisa ikut?</span>
+                            <svg class="w-5 h-5 faq-icon transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-content mt-4 text-slate-400 text-sm leading-relaxed">
+                            Bisa, karna kelas kami didesain khusus mulai dari nol, termasuk pengenalan Hiragana dan Katakana bahkan Jepang itu sendiri.
+                        </div>
+                    </div>
+                    <div class="faq-item bg-slate-800/50 rounded-2xl p-6 cursor-pointer border border-slate-700">
+                        <div class="flex justify-between items-center faq-header">
+                            <span class="font-bold">Berapa lama durasi setiap kelasnya?</span>
+                            <svg class="w-5 h-5 faq-icon transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-content mt-4 text-slate-400 text-sm leading-relaxed">
+                            Kelas berlangsung selama 1 - 1,5 jam, sesuai yang sudah ditentukan di tiap paketnya.
+                        </div>
+                    </div>
+                    <div class="faq-item bg-slate-800/50 rounded-2xl p-6 cursor-pointer border border-slate-700">
+                        <div class="flex justify-between items-center faq-header">
+                            <span class="font-bold">Apakah ada grup diskusi setelah kelas selesai?</span>
+                            <svg class="w-5 h-5 faq-icon transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-content mt-4 text-slate-400 text-sm leading-relaxed">
+                            Tentu! Kamu tetap bisa berdiskusi di grup komunitas/kelas untuk tetap berinteraksi dengan sesama pelajar.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20">
+                <a href="https://tally.so/r/VLlQqv" class="inline-block bg-white text-slate-900 px-10 py-4 rounded-full font-bold hover:bg-blue-100 transition shadow-xl">
+                    Tanya Hashira
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-slate-500 text-sm font-medium">
+        &copy; 2026 Hashira Japanese Community
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const showMoreBtn = document.getElementById('show-more-btn');
+        const extraTestimonials = document.querySelectorAll('.extra-testimonial');
+        
+        showMoreBtn.addEventListener('click', () => {
+            extraTestimonials.forEach(item => {
+                item.classList.toggle('hidden');
+            });
+            showMoreBtn.innerHTML = extraTestimonials[0].classList.contains('hidden') 
+                ? 'Selengkapnya <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>' 
+                : 'Sembunyikan <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>';
+        });
+
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
