@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Quiz</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/wTVy85Yj/Desain-tanpa-judul-20260307-090651-0000.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .hero-bg { background: radial-gradient(circle at top right, #fff7ed, #ffffff, #fffaf5); min-height: 100vh; }
+        .ans-btn { transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .ans-btn:hover { transform: scale(1.05); }
+        .hidden { display: none; }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+        .wrong-anim { animation: shake 0.2s ease-in-out 0s 2; background-color: #fee2e2 !important; border-color: #ef4444 !important; }
+        .correct-anim { background-color: #dcfce7 !important; border-color: #22c55e !important; }
+    </style>
+</head>
+<body class="hero-bg text-slate-900 p-6 flex items-center justify-center">
+
+    <div id="setup-menu" class="max-w-md w-full glass-card p-8 rounded-[2.5rem] shadow-2xl shadow-orange-100">
+        <div class="text-center mb-8">
+            <img src="https://i.postimg.cc/T38MCgBM/20230801-223040.jpg" class="w-16 h-16 rounded-2xl mx-auto mb-4 shadow-lg">
+            <h1 class="text-3xl font-extrabold text-orange-600">Kanji <span class="text-slate-800">Quiz</span></h1>
+            <p class="text-slate-500 text-sm mt-2">Uji kemampuan JLPT Kanji kamu</p>
+        </div>
+
+        <div class="space-y-6">
+            <div>
+                <label class="block text-sm font-bold mb-2">Pilih Level:</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="setLevel('n5')" id="btn-n5" class="py-3 rounded-xl border-2 border-orange-600 bg-orange-50 text-orange-600 font-bold">JLPT N5</button>
+                    <button onclick="setLevel('n4')" id="btn-n4" class="py-3 rounded-xl border-2 border-slate-200 font-bold hover:border-orange-300">JLPT N4</button>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-bold mb-2">Jumlah Soal:</label>
+                <select id="total-q" class="w-full p-3 rounded-xl border border-slate-200 focus:outline-orange-500 font-medium">
+                    <option value="10">10 Soal</option>
+                    <option value="20">20 Soal</option>
+                    <option value="50">50 Soal</option>
+                </select>
+            </div>
+
+            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl">
+                <div>
+                    <p class="font-bold text-sm">Mode Nyawa (3 Life)</p>
+                    <p class="text-xs text-slate-500">Salah 3x = Game Over</p>
+                </div>
+                <input type="checkbox" id="life-mode" class="w-6 h-6 accent-orange-600 cursor-pointer">
+            </div>
+
+            <div class="pt-4">
+                <button onclick="startQuiz()" class="w-full bg-orange-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-orange-200 hover:bg-orange-700 transition">Mulai Latihan</button>
+                <a href="menu-quiz.html" class="block text-center mt-4 text-slate-400 text-sm font-bold hover:text-slate-600">Kembali ke Menu Quiz</a>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-slate-100 text-center">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Highscore Kanji</p>
+            <p id="display-hs" class="text-xl font-extrabold text-slate-800">0</p>
+        </div>
+    </div>
+
+    <div id="quiz-area" class="max-w-md w-full glass-card p-8 rounded-[2.5rem] shadow-2xl shadow-orange-100 hidden">
+        <div class="flex justify-between items-center mb-8">
+            <div id="life-container" class="flex gap-1 text-xl"></div>
+            <div class="text-right">
+                <p class="text-[10px] font-bold text-slate-400 uppercase">Score</p>
+                <p id="current-score" class="text-xl font-extrabold text-orange-600">0</p>
+            </div>
+        </div>
+
+        <div class="relative w-full h-2 bg-slate-100 rounded-full mb-10 overflow-hidden">
+            <div id="progress-bar" class="absolute top-0 left-0 h-full bg-orange-600 transition-all duration-300" style="width: 0%"></div>
+        </div>
+
+        <div class="text-center mb-12">
+            <h2 id="kanji-display" class="text-8xl font-black text-slate-800">水</h2>
+            <p class="text-slate-400 mt-4 font-medium uppercase tracking-widest text-xs">Pilih arti yang tepat</p>
+        </div>
+
+        <div id="options-grid" class="grid grid-cols-2 gap-4">
+            </div>
+    </div>
+
+    <div id="result-screen" class="max-w-md w-full glass-card p-10 rounded-[2.5rem] shadow-2xl text-center hidden">
+        <div id="result-icon" class="text-6xl mb-6">🏆</div>
+        <h2 id="result-title" class="text-3xl font-extrabold mb-2">Hebat, Shall!</h2>
+        <p id="result-msg" class="text-slate-500 mb-8">Kanji kamu semakin mantap.</p>
+        
+        <div class="bg-orange-50 rounded-3xl p-6 mb-8">
+            <p class="text-xs font-bold text-orange-400 uppercase mb-1">Skor Akhir</p>
+            <p id="final-score" class="text-5xl font-black text-orange-600">0</p>
+        </div>
+
+        <button onclick="location.reload()" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-orange-600 transition shadow-lg">Main Lagi</button>
+    </div>
+
+    <script>
+        // Contoh data: Kanji : Arti
+        const kanjiN5 = { '水':'Air','火':'Api','山':'Gunung','川':'Sungai','木':'Pohon','金':'Emas','人':'Orang','日':'Matahari/Hari','月':'Bulan','名':'Nama' };
+        const kanjiN4 = { '家族':'Keluarga','空':'Langit','海':'Laut','駅':'Stasiun','料理':'Masakan','勉強':'Belajar','歌':'Lagu','朝':'Pagi','昼':'Siang','晩':'Malam' };
+
+        let currentLevel = 'n5';
+        let score = 0;
+        let lives = 3;
+        let isLifeMode = false;
+        let currentIdx = 0;
+        let questions = [];
+        let pool = {};
+
+        // Load Highscore
+        document.getElementById('display-hs').innerText = localStorage.getItem('kanji_hs') || 0;
+
+        function setLevel(lvl) {
+            currentLevel = lvl;
+            document.getElementById('btn-n5').className = lvl === 'n5' ? 'py-3 rounded-xl border-2 border-orange-600 bg-orange-50 text-orange-600 font-bold' : 'py-3 rounded-xl border-2 border-slate-200 font-bold hover:border-orange-300';
+            document.getElementById('btn-n4').className = lvl === 'n4' ? 'py-3 rounded-xl border-2 border-orange-600 bg-orange-50 text-orange-600 font-bold' : 'py-3 rounded-xl border-2 border-slate-200 font-bold hover:border-orange-300';
+        }
+
+        function startQuiz() {
+            pool = currentLevel === 'n5' ? kanjiN5 : kanjiN4;
+            isLifeMode = document.getElementById('life-mode').checked;
+            const total = parseInt(document.getElementById('total-q').value);
+            
+            const keys = Object.keys(pool).sort(() => Math.random() - 0.5);
+            questions = keys.slice(0, total);
+
+            document.getElementById('setup-menu').classList.add('hidden');
+            document.getElementById('quiz-area').classList.remove('hidden');
+            
+            updateLifeUI();
+            nextQuestion();
+        }
+
+        function updateLifeUI() {
+            const container = document.getElementById('life-container');
+            container.innerHTML = isLifeMode ? '❤️'.repeat(lives) : '🔥 Unlimited';
+        }
+
+        function nextQuestion() {
+            if (currentIdx >= questions.length) return finish(true);
+            
+            const q = questions[currentIdx];
+            const correct = pool[q];
+            document.getElementById('kanji-display').innerText = q;
+            document.getElementById('progress-bar').style.width = `${(currentIdx / questions.length) * 100}%`;
+
+            let options = [correct];
+            const allAnswers = Object.values(pool);
+            while(options.length < 4) {
+                let rand = allAnswers[Math.floor(Math.random() * allAnswers.length)];
+                if(!options.includes(rand)) options.push(rand);
+            }
+            options.sort(() => Math.random() - 0.5);
+
+            const grid = document.getElementById('options-grid');
+            grid.innerHTML = '';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'ans-btn bg-white border-2 border-slate-100 py-4 rounded-2xl font-bold text-lg shadow-sm hover:border-orange-400 px-2';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(opt, correct, btn);
+                grid.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(chosen, correct, btn) {
+            if(chosen === correct) {
+                score += 10;
+                btn.classList.add('correct-anim');
+                document.getElementById('current-score').innerText = score;
+                setTimeout(() => {
+                    currentIdx++;
+                    nextQuestion();
+                }, 400);
+            } else {
+                btn.classList.add('wrong-anim');
+                if(isLifeMode) {
+                    lives--;
+                    updateLifeUI();
+                    if(lives <= 0) return finish(false);
+                }
+            }
+        }
+
+        function finish(success) {
+            document.getElementById('quiz-area').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            document.getElementById('final-score').innerText = score;
+
+            if(!success) {
+                document.getElementById('result-icon').innerText = '❌';
+                document.getElementById('result-title').innerText = 'Coba Lagi!';
+                document.getElementById('result-msg').innerText = 'Jangan menyerah, belajar lagi kuncinya.';
+            }
+
+            const hs = localStorage.getItem('kanji_hs') || 0;
+            if(score > hs) localStorage.setItem('kanji_hs', score);
+        }
+    </script>
+</body>
+</html>
