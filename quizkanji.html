@@ -84,8 +84,7 @@
             <p class="text-slate-400 mt-4 font-medium uppercase tracking-widest text-xs">Pilih arti yang tepat</p>
         </div>
 
-        <div id="options-grid" class="grid grid-cols-2 gap-4">
-            </div>
+        <div id="options-grid" class="grid grid-cols-2 gap-4"></div>
     </div>
 
     <div id="result-screen" class="max-w-md w-full glass-card p-10 rounded-[2.5rem] shadow-2xl text-center hidden">
@@ -102,9 +101,9 @@
     </div>
 
     <script>
-        // Contoh data: Kanji : Arti
-        const kanjiN5 = { '一':'Satu','二':'Dua','三':'Tiga','四':'Empat','五':'Lima','六':'Enam','七':'Tujuh','八':'Delapan','九':'Sembilan','十':'Sepuluh','百':'Ratusan','千':'Ribuan','万':'Puluh Ribu','円':'Yen/Lingkaran','何':'Apa','日':'Hari/Matahari','月':'Bulan','火':'Api','水':'Air','木':'Pohon','金':'Emas/Uang','土':'Tanah','年':'Tahun','午':'Siang','前':'Depan/Sebelum','後':'Belakang/Sesudah','今':'Sekarang','週':'Minggu','間':'Antara/Durasi','毎':'Setiap','時':'Waktu/Jam','分':'Menit/Bagian','山':'Gunung','川':'Sungai','田':'Sawah','天':'Langit','気':'Energi/Perasaan','空':'Langit/Kosong','雨':'Hujan','雪':'Salju','風':'Angin','南':'Selatan','北':'Utara','東':'Timur','西':'Barat','上':'Atas','下':'Bawah','左':'Kiri','右':'Kanan','中':'Tengah','外':'Luar','人':'Orang','子':'Anak','女':'Perempuan','男':'Laki-laki','父':'Ayah','母':'Ibu','友':'Teman','本':'Buku/Asal','体':'Tubuh','目':'Mata','耳':'Telinga','口':'Mulut','手':'Tangan','足':'Kaki','行':'Pergi','来':'Datang','出':'Keluar','入':'Masuk','食':'Makan','飲':'Minum','見':'Melihat','聞':'Mendengar','読':'Membaca','書':'Menulis','话':'Berbicara','買':'Membeli','教':'Mengajar','休':'Istirahat','立':'Berdiri','自':'Diri Sendiri','道':'Jalan','歩':'Berjalan','走':'Lari','止':'Berhenti','会':'Bertemu','売':'Menjual','大':'Besar','小':'Kecil','高':'Tinggi/Mahal','安':'Murah/Tenang','新':'Baru','古':'Lama','長':'Panjang','白':'Putih','黒':'Hitam','赤':'Merah','青':'Biru','明':'Terang','暗':'Gelap','好':'Suka','多':'Banyak','少':'Sedikit','半':'Setengah','弱':'Lemah','強':'Kuat','広':'Luas','早':'Cepat','国':'Negara','店':'Toko','校':'Sekolah','社':'Perusahaan/Kuil','銀':'Perak','駅':'Stasiun','电':'Listrik','家':'Rumah','室':'Ruangan','京':'Kota Kyoto','都':'Ibu Kota','門':'Gerbang','場':'Tempat','所':'Tempat','学':'Belajar','生':'Lahir/Murid','先':'Dulu/Guru','文':'Tulisan','字':'Karakter/Huruf','名':'Nama','语':'Bahasa','英':'Inggris','花':'Bunga','茶':'Teh','魚':'Ikan','鳥':'Burung','物':'Barang/Benda','心':'Hati','方':'Arah/Cara','正':'Benar','同':'Sama','元':'Asal','草':'Rumput','石':'Batu','皿':'Piring','谷':'Lembah','海':'Laut' };
-        const kanjiN4 = { ​'不':'Tidak','世':'Dunia','主':'Majikan/Utama','乗':'Naik Kendaraan','事':'Hal/Kejadian','仕':'Melayani','代':'Mengganti/Era','以':'Dari/Sejak','低':'Rendah','住':'Tinggal','体':'Tubuh','何':'Apa','作':'Membuat','使':'Menggunakan','借':'Meminjam','元':'Asal','兄':'Kakak Laki-laki','姉':'Kakak Perempuan','妹':'Adik Perempuan','弟':'Adik Laki-laki','光':'Cahaya','公':'Publik','切':'Memotong','別':'Berpisah','力':'Kekuatan','勉':'Berusaha','動':'Bergerak','区':'Distrik','医':'Dokter','去':'Meninggalkan/Lalu','台':'Rak/Alas','合':'Cocok/Bergabung','同':'Sama','味':'Rasa','品':'Barang','員':'Anggota','図':'Gambar/Peta','地':'Tanah','堂':'Aula','場':'Tempat','声':'Suara','夕':'Sore','太':'Gemuk','夜':'Malam','好':'Suka','妹':'Adik Perempuan','始':'Mulai','字':'Huruf','安':'Murah','室':'Ruangan','家':'Rumah','寒':'Dingin (Cuaca)','対':'Lawan','少':'Sedikit','工':'Pekerjaan/Industri','市':'Kota','帰':'Pulang','広':'Luas','度':'Derajat/Kali','建':'Membangun','引':'Menarik','強':'Kuat','心':'Hati','忘':'Lupa','急':'Cepat/Tiba-tiba','悪':'Buruk','意':'Maksud','所':'Tempat','持':'Membawa','指':'Jari','拾':'Memungut','放':'Melepaskan','政':'Politik','教':'Mengajar','文':'Kalimat','断':'Memutus','新':'Baru','方':'Arah/Cara','族':'Keluarga/Suku','旅':'Perjalanan','曜':'Hari','有':'Ada/Punya','服':'Baju','朝':'Pagi','業':'Bisnis/Tugas','楽':'Nyaman/Senang','歌':'Lagu','止':'Berhenti','正':'Benar','死':'Mati','民':'Rakyat','注意':'Peringatan','決':'Memutuskan','治':'Menyembuhkan','法':'Hukum','海':'Laut','漢':'Mandarin/China','牛':'Sapi','物':'Benda','特':'Spesial','犬':'Anjing','理':'Alasan','産':'Lahir/Produksi','用':'Guna','田':'Sawah','町':'Kota','画':'Gambar','界':'Dunia','病':'Sakit','発':'Berangkat','登':'Mendaki','白':'Putih','目':'Mata','短':'Pendek','知':'Tahu','石':'Batu','研':'Penelitian','究':'Investigasi','社':'Perusahaan','神':'Dewa','私':'Saya','秋':'Musim Gugur','究':'Penelitian','空':'Langit','立':'Berdiri','答':'Menjawab','紙':'Kertas','終':'Selesai','習':'Belajar','考':'Berpikir','者':'Orang','肉':'Daging','自':'Sendiri','至':'Sampai','色':'Warna','茶':'Teh','草':'Rumput','薬':'Obat','親':'Orang Tua/Akrab','計':'Mengukur','記':'Mencatat','試':'Mencoba','説':'Menjelaskan','貸':'Meminjamkan','質':'Kualitas/Pertanyaan','赤':'Merah','走':'Lari','起':'Bangun','足':'Kaki','転':'Terguling','軽':'Ringan','近':'Dekat','送':'Mengirim','通':'Melewati','進':'Maju','運':'Mengangkut/Nasib','遠':'Jauh','都':'Ibu Kota','重':'Berat','野':'Lapangan','銀':'Perak','開':'Membuka','院':'Institusi','集':'Kumpul','青':'Biru','音':'Bunyi','題':'Topik/Judul','風':'Angin','飯':'Nasi/Makan','飲':'Minum','館':'Gedung/Aula','験':'Ujian',​'借':'Pinjam','貸':'Pinjamkan','勝':'Menang','負':'Kalah','願':'Mohon','期':'Periode','機':'Mesin','欠':'Kurang','結':'Ikat','婚':'Nikah','様':'Tuan/Nyonya','全':'Semua','最':'Paling','無':'Tidak ada','非':'Bukan','第':'Ke- (Nomor)','的':'Sifat','性':'Gender/Sifat','建':'Bangun','物':'Benda','昨':'Kemarin','明':'Besok/Terang','便':'Nyaman/Pos','利':'Keuntungan','使':'Guna','使':'Pakai','始':'Mulai','終':'Selesai','洗':'Cuci','写':'Salin','真':'Benar','庭':'Halaman','勉':'Berusaha','強':'Kuat','研':'Penelitian','究':'Investigasi','留':'Tinggal/Berhenti','質':'Kualitas','問':'Pertanyaan','題':'Masalah','宿':'Penginapan','試':'Coba','験':'Ujian','答':'Jawab','教':'Ajar','数':'Angka','多':'Banyak','少':'Sedikit','太':'Gemuk','細':'Kurus','丸':'Bulat','熱':'Panas (Benda)','冷':'Dingin (Benda)','静':'Tenang','忙':'Sibuk','首':'Leher','顔':'Wajah','指':'Jari','歯':'Gigi','声':'Suara','心':'Hati','重':'Berat','軽':'Ringan','洗':'Cuci','洋':'Barat','服':'Baju' };
+        const kanjiN5 = { '一':'Satu','二':'Dua','三':'Tiga','四':'Empat','五':'Lima','六':'Enam','七':'Tujuh','八':'Delapan','九':'Sembilan','十':'Sepuluh','百':'Ratusan','千':'Ribuan','万':'Puluh Ribu','円':'Yen/Lingkaran','何':'Apa','日':'Hari/Matahari','月':'Bulan','火':'Api','水':'Air','木':'Pohon','金':'Emas/Uang','土':'Tanah','年':'Tahun','午':'Siang','前':'Depan/Sebelum','後':'Belakang/Sesudah','今':'Sekarang','週':'Minggu','間':'Antara/Durasi','毎':'Setiap','時':'Waktu/Jam','分':'Menit/Bagian','山':'Gunung','川':'Sungai','田':'Sawah','天':'Langit','気':'Energi/Perasaan','空':'Langit/Kosong','雨':'Hujan','雪':'Salju','风':'Angin','南':'Selatan','北':'Utara','东':'Timur','西':'Barat','上':'Atas','下':'Bawah','左':'Kiri','右':'Kanan','中':'Tengah','外':'Luar','人':'Orang','子':'Anak','女':'Perempuan','男':'Laki-laki','父':'Ayah','母':'Ibu','友':'Teman','本':'Buku/Asal','体':'Tubuh','目':'Mata','耳':'Telinga','口':'Mulut','手':'Tangan','足':'Kaki','行':'Pergi','来':'Datang','出':'Keluar','入':'Masuk','食':'Makan','饮':'Minum','见':'Melihat','闻':'Mendengar','读':'Membaca','书':'Menulis','买':'Membeli','教':'Mengajar','休':'Istirahat','立':'Berdiri','自':'Diri Sendiri','道':'Jalan','歩':'Berjalan','走':'Lari','止':'Berhenti','会':'Bertemu','卖':'Menjual','大':'Besar','小':'Kecil','高':'Tinggi/Mahal','安':'Murah/Tenang','新':'Baru','古':'Lama','长':'Panjang','白':'Putih','黑':'Hitam','赤':'Merah','青':'Biru','明':'Terang','暗':'Gelap','好':'Suka','多':'Banyak','少':'Sedikit','半':'Setengah','弱':'Lemah','强':'Kuat','广':'Luas','早':'Cepat','国':'Negara','店':'Toko','校':'Sekolah','社':'Perusahaan/Kuil','银':'Perak','駅':'Stasiun','家':'Rumah','室':'Ruangan','京':'Kota Kyoto','都':'Ibu Kota','门':'Gerbang','场':'Tempat','所':'Tempat','学':'Belajar','生':'Lahir/Murid','先':'Dulu/Guru','文':'Tulisan','字':'Karakter/Huruf','名':'Nama','英':'Inggris','花':'Bunga','茶':'Teh','魚':'Ikan','鳥':'Burung','物':'Barang/Benda','心':'Hati','方':'Arah/Cara','正':'Benar','同':'Sama','元':'Asal','草':'Rumput','石':'Batu','皿':'Piring','谷':'Lembah','海':'Laut' };
+        
+        const kanjiN4 = { '不':'Tidak','世':'Dunia','主':'Majikan/Utama','乗':'Naik Kendaraan','事':'Hal/Kejadian','仕':'Melayani','代':'Mengganti/Era','以':'Dari/Sejak','低':'Rendah','住':'Tinggal','体':'Tubuh','何':'Apa','作':'Membuat','使':'Menggunakan','借':'Meminjam','元':'Asal','兄':'Kakak Laki-laki','姉':'Kakak Perempuan','妹':'Adik Perempuan','弟':'Adik Laki-laki','光':'Cahaya','公':'Publik','切':'Memotong','别':'Berpisah','力':'Kekuatan','勉':'Berusaha','动':'Bergerak','区':'Distrik','医':'Dokter','去':'Meninggalkan/Lalu','台':'Rak/Alas','合':'Cocok/Bergabung','同':'Sama','味':'Rasa','品':'Barang','员':'Anggota','图':'Gambar/Peta','地':'Tanah','堂':'Aula','场':'Tempat','声':'Suara','夕':'Sore','太':'Gemuk','夜':'Malam','好':'Suka','始':'Mulai','字':'Huruf','安':'Murah','室':'Ruangan','家':'Rumah','寒':'Dingin (Cuaca)','对':'Lawan','少':'Sedikit','工':'Pekerjaan/Industri','市':'Kota','归':'Pulang','广':'Luas','度':'Derajat/Kali','建':'Membangun','引':'Menarik','强':'Kuat','心':'Hati','忘':'Lupa','急':'Cepat/Tiba-tiba','恶':'Buruk','意':'Maksud','所':'Tempat','持':'Membawa','指':'Jari','拾':'Memungut','放':'Melepaskan','政':'Politik','教':'Mengajar','文':'Kalimat','断':'Memutus','新':'Baru','方':'Arah/Cara','族':'Keluarga/Suku','旅':'Perjalanan','曜':'Hari','有':'Ada/Punya','服':'Baju','朝':'Pagi','业':'Bisnis/Tugas','乐':'Nyaman/Senang','歌':'Lagu','止':'Berhenti','正':'Benar','死':'Mati','民':'Rakyat','注意':'Peringatan','决':'Memutuskan','治':'Menyembuhkan','法':'Hukum','海':'Laut','汉':'Mandarin/China','牛':'Sapi','物':'Benda','特':'Spesial','犬':'Anjing','理':'Alasan','产':'Lahir/Produksi','用':'Guna','町':'Kota','画':'Gambar','界':'Dunia','病':'Sakit','发':'Berangkat','登':'Mendaki','白':'Putih','目':'Mata','短':'Pendek','知':'Tahu','石':'Batu','研':'Penelitian','究':'Investigasi','社':'Perusahaan','神':'Dewa','私':'Saya','秋':'Musim Gugur','空':'Langit','立':'Berdiri','答':'Menjawab','纸':'Kertas','终':'Selesai','习':'Belajar','考':'Berpikir','者':'Orang','肉':'Daging','自':'Sendiri','至':'Sampai','色':'Warna','茶':'Teh','草':'Rumput','药':'Obat','亲':'Orang Tua/Akrab','计':'Mengukur','记':'Mencatat','试':'Mencoba','说':'Menjelaskan','贷':'Meminjamkan','质':'Kualitas/Pertanyaan','赤':'Merah','走':'Lari','起':'Bangun','足':'Kaki','转':'Terguling','轻':'Ringan','近':'Dekat','送':'Mengirim','通':'Melewati','进':'Maju','运':'Mengangkut/Nasib','远':'Jauh','都':'Ibu Kota','重':'Berat','野':'Lapangan','银':'Perak','开':'Membuka','院':'Institusi','集':'Kumpul','青':'Biru','音':'Bunyi','题':'Topik/Judul','风':'Angin','饭':'Nasi/Makan','饮':'Minum','馆':'Gedung/Aula','验':'Ujian','胜':'Menang','负':'Kalah','愿':'Mohon','期':'Periode','机':'Mesin','欠':'Kurang','结':'Ikat','婚':'Nikah','様':'Tuan/Nyonya','全':'Semua','最':'Paling','无':'Tidak ada','非':'Bukan','第':'Ke- (Nomor)','的':'Sifat','性':'Gender/Sifat','昨':'Kemarin','明':'Besok/Terang','便':'Nyaman/Pos','利':'Keuntungan','洗':'Cuci','写':'Salin','真':'Benar','庭':'Halaman','留':'Tinggal/Berhenti','问':'Pertanyaan','宿':'Penginapan','数':'Angka','细':'Kurus','丸':'Bulat','热':'Panas (Benda)','冷':'Dingin (Benda)','静':'Tenang','忙':'Sibuk','首':'Leher','顔':'Wajah','歯':'Gigi','洋':'Barat' };
 
         let currentLevel = 'n5';
         let score = 0;
@@ -114,7 +113,6 @@
         let questions = [];
         let pool = {};
 
-        // Load Highscore
         document.getElementById('display-hs').innerText = localStorage.getItem('kanji_hs') || 0;
 
         function setLevel(lvl) {
@@ -126,10 +124,17 @@
         function startQuiz() {
             pool = currentLevel === 'n5' ? kanjiN5 : kanjiN4;
             isLifeMode = document.getElementById('life-mode').checked;
-            const total = parseInt(document.getElementById('total-q').value);
+            const totalInput = parseInt(document.getElementById('total-q').value);
             
             const keys = Object.keys(pool).sort(() => Math.random() - 0.5);
-            questions = keys.slice(0, total);
+            const maxAvailable = keys.length;
+            const actualTotal = Math.min(totalInput, maxAvailable);
+            
+            questions = keys.slice(0, actualTotal);
+            currentIdx = 0;
+            score = 0;
+            lives = 3;
+            document.getElementById('current-score').innerText = score;
 
             document.getElementById('setup-menu').classList.add('hidden');
             document.getElementById('quiz-area').classList.remove('hidden');
@@ -153,7 +158,7 @@
 
             let options = [correct];
             const allAnswers = Object.values(pool);
-            while(options.length < 4) {
+            while(options.length < 4 && options.length < allAnswers.length) {
                 let rand = allAnswers[Math.floor(Math.random() * allAnswers.length)];
                 if(!options.includes(rand)) options.push(rand);
             }
@@ -200,7 +205,7 @@
                 document.getElementById('result-msg').innerText = 'Jangan menyerah, belajar lagi kuncinya.';
             }
 
-            const hs = localStorage.getItem('kanji_hs') || 0;
+            const hs = parseInt(localStorage.getItem('kanji_hs')) || 0;
             if(score > hs) localStorage.setItem('kanji_hs', score);
         }
     </script>
