@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kana Quiz</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/wTVy85Yj/Desain-tanpa-judul-20260307-090651-0000.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .hero-bg { background: radial-gradient(circle at top right, #e0f2fe, #ffffff, #f0f9ff); min-height: 100vh; }
+        .ans-btn { transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .ans-btn:hover { transform: scale(1.05); }
+        .hidden { display: none; }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+        .wrong-anim { animation: shake 0.2s ease-in-out 0s 2; background-color: #fee2e2 !important; border-color: #ef4444 !important; }
+        .correct-anim { background-color: #dcfce7 !important; border-color: #22c55e !important; }
+    </style>
+</head>
+<body class="hero-bg text-slate-900 p-6 flex items-center justify-center">
+
+    <div id="setup-menu" class="max-w-md w-full glass-card p-8 rounded-[2.5rem] shadow-2xl shadow-blue-100">
+        <div class="text-center mb-8">
+            <img src="https://i.postimg.cc/T38MCgBM/20230801-223040.jpg" class="w-16 h-16 rounded-2xl mx-auto mb-4 shadow-lg">
+            <h1 class="text-3xl font-extrabold text-blue-600">Kana <span class="text-slate-800">Quiz</span></h1>
+            <p class="text-slate-500 text-sm mt-2">Asah kemampuan Hiragana & Katakana kamu</p>
+        </div>
+
+        <div class="space-y-6">
+            <div>
+                <label class="block text-sm font-bold mb-2">Pilih Jenis Huruf:</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="setMode('h')" id="btn-h" class="py-3 rounded-xl border-2 border-blue-600 bg-blue-50 text-blue-600 font-bold">Hiragana</button>
+                    <button onclick="setMode('k')" id="btn-k" class="py-3 rounded-xl border-2 border-slate-200 font-bold hover:border-blue-300">Katakana</button>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-bold mb-2">Jumlah Soal:</label>
+                <select id="total-q" class="w-full p-3 rounded-xl border border-slate-200 focus:outline-blue-500 font-medium">
+                    <option value="10">10 Soal</option>
+                    <option value="20">20 Soal</option>
+                    <option value="50">50 Soal</option>
+                </select>
+            </div>
+
+            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl">
+                <div>
+                    <p class="font-bold text-sm">Mode Nyawa (3 Life)</p>
+                    <p class="text-xs text-slate-500">Salah 3x = Game Over</p>
+                </div>
+                <input type="checkbox" id="life-mode" class="w-6 h-6 accent-blue-600 cursor-pointer">
+            </div>
+
+            <div class="pt-4">
+                <button onclick="startQuiz()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-blue-200 hover:bg-blue-700 transition">Mulai Latihan</button>
+                <a href="index.html" class="block text-center mt-4 text-slate-400 text-sm font-bold hover:text-slate-600">Kembali ke Beranda</a>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-slate-100 text-center">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Highscore</p>
+            <p id="display-hs" class="text-xl font-extrabold text-slate-800">0</p>
+        </div>
+    </div>
+
+    <div id="quiz-area" class="max-w-md w-full glass-card p-8 rounded-[2.5rem] shadow-2xl shadow-blue-100 hidden">
+        <div class="flex justify-between items-center mb-8">
+            <div id="life-container" class="flex gap-1 text-xl"></div>
+            <div class="text-right">
+                <p class="text-[10px] font-bold text-slate-400 uppercase">Score</p>
+                <p id="current-score" class="text-xl font-extrabold text-blue-600">0</p>
+            </div>
+        </div>
+
+        <div class="relative w-full h-2 bg-slate-100 rounded-full mb-10 overflow-hidden">
+            <div id="progress-bar" class="absolute top-0 left-0 h-full bg-blue-600 transition-all duration-300" style="width: 0%"></div>
+        </div>
+
+        <div class="text-center mb-12">
+            <h2 id="kana-display" class="text-8xl font-black text-slate-800">あ</h2>
+            <p class="text-slate-400 mt-4 font-medium uppercase tracking-widest text-xs">Pilih Romaji yang tepat</p>
+        </div>
+
+        <div id="options-grid" class="grid grid-cols-2 gap-4">
+            </div>
+    </div>
+
+    <div id="result-screen" class="max-w-md w-full glass-card p-10 rounded-[2.5rem] shadow-2xl text-center hidden">
+        <div id="result-icon" class="text-6xl mb-6">🎉</div>
+        <h2 id="result-title" class="text-3xl font-extrabold mb-2">Mantap, Shall!</h2>
+        <p id="result-msg" class="text-slate-500 mb-8">Kamu berhasil menyelesaikan kuis ini.</p>
+        
+        <div class="bg-blue-50 rounded-3xl p-6 mb-8">
+            <p class="text-xs font-bold text-blue-400 uppercase mb-1">Skor Akhir</p>
+            <p id="final-score" class="text-5xl font-black text-blue-600">0</p>
+        </div>
+
+        <button onclick="location.reload()" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-blue-600 transition shadow-lg">Main Lagi</button>
+    </div>
+
+    <script>
+        const hiragana = { 'あ':'a','い':'i','う':'u','え':'e','お':'o','か':'ka','き':'ki','く':'ku','け':'ke','こ':'ko','さ':'sa','し':'shi','す':'su','せ':'se','そ':'so','た':'ta','ち':'chi','つ':'tsu','て':'te','と':'to','な':'na','に':'ni','ぬ':'nu','ね':'ne','の':'no','は':'ha','ひ':'hi','ふ':'fu','へ':'he','ほ':'ho','ま':'ma','み':'mi','む':'mu','me':'me','も':'mo','や':'ya','ゆ':'yu','よ':'yo','ら':'ra','り':'ri','る':'ru','れ':'re','ろ':'ro','わ':'wa','を':'wo','ん':'n' };
+        const katakana = { 'ア':'a','イ':'i','ウ':'u','エ':'e','オ':'o','カ':'ka','キ':'ki','ク':'ku','ケ':'ke','コ':'ko','サ':'sa','シ':'shi','ス':'su','セ':'se','ソ':'so','タ':'ta','チ':'chi','ツ':'tsu','テ':'te','ト':'to','ナ':'na','ニ':'ni','ヌ':'nu','ネ':'ne','ノ':'no','ハ':'ha','ヒ':'hi','フ':'fu','ヘ':'he','ホ':'ho','マ':'ma','ミ':'mi','ム':'mu','メ':'me','モ':'mo','ヤ':'ya','ユ':'yu','ヨ':'yo','ラ':'ra','リ':'ri','ル':'ru','レ':'re','ロ':'ro','ワ':'wa','ヲ':'wo','ン':'n' };
+
+        let mode = 'h';
+        let score = 0;
+        let lives = 3;
+        let isLifeMode = false;
+        let currentIdx = 0;
+        let questions = [];
+        let pool = {};
+
+        // Load Highscore
+        document.getElementById('display-hs').innerText = localStorage.getItem('kana_hs') || 0;
+
+        function setMode(m) {
+            mode = m;
+            document.getElementById('btn-h').className = m === 'h' ? 'py-3 rounded-xl border-2 border-blue-600 bg-blue-50 text-blue-600 font-bold' : 'py-3 rounded-xl border-2 border-slate-200 font-bold hover:border-blue-300';
+            document.getElementById('btn-k').className = m === 'k' ? 'py-3 rounded-xl border-2 border-blue-600 bg-blue-50 text-blue-600 font-bold' : 'py-3 rounded-xl border-2 border-slate-200 font-bold hover:border-blue-300';
+        }
+
+        function startQuiz() {
+            pool = mode === 'h' ? hiragana : katakana;
+            isLifeMode = document.getElementById('life-mode').checked;
+            const total = parseInt(document.getElementById('total-q').value);
+            
+            const keys = Object.keys(pool).sort(() => Math.random() - 0.5);
+            questions = keys.slice(0, total);
+
+            document.getElementById('setup-menu').classList.add('hidden');
+            document.getElementById('quiz-area').classList.remove('hidden');
+            
+            updateLifeUI();
+            nextQuestion();
+        }
+
+        function updateLifeUI() {
+            const container = document.getElementById('life-container');
+            container.innerHTML = isLifeMode ? '❤️'.repeat(lives) : '🔥 Unlimited';
+        }
+
+        function nextQuestion() {
+            if (currentIdx >= questions.length) return finish(true);
+            
+            const q = questions[currentIdx];
+            const correct = pool[q];
+            document.getElementById('kana-display').innerText = q;
+            document.getElementById('progress-bar').style.width = `${(currentIdx / questions.length) * 100}%`;
+
+            // Buat Opsi
+            let options = [correct];
+            const allRomaji = Object.values(pool);
+            while(options.length < 4) {
+                let rand = allRomaji[Math.floor(Math.random() * allRomaji.length)];
+                if(!options.includes(rand)) options.push(rand);
+            }
+            options.sort(() => Math.random() - 0.5);
+
+            const grid = document.getElementById('options-grid');
+            grid.innerHTML = '';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'ans-btn bg-white border-2 border-slate-100 py-4 rounded-2xl font-bold text-xl shadow-sm hover:border-blue-400';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(opt, correct, btn);
+                grid.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(chosen, correct, btn) {
+            if(chosen === correct) {
+                score += 10;
+                btn.classList.add('correct-anim');
+                document.getElementById('current-score').innerText = score;
+                setTimeout(() => {
+                    currentIdx++;
+                    nextQuestion();
+                }, 400);
+            } else {
+                btn.classList.add('wrong-anim');
+                if(isLifeMode) {
+                    lives--;
+                    updateLifeUI();
+                    if(lives <= 0) return finish(false);
+                }
+            }
+        }
+
+        function finish(success) {
+            document.getElementById('quiz-area').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            document.getElementById('final-score').innerText = score;
+
+            if(!success) {
+                document.getElementById('result-icon').innerText = '💀';
+                document.getElementById('result-title').innerText = 'Game Over!';
+                document.getElementById('result-msg').innerText = 'Jangan menyerah, coba lagi yuk!';
+            }
+
+            const hs = localStorage.getItem('kana_hs') || 0;
+            if(score > hs) localStorage.setItem('kana_hs', score);
+        }
+    </script>
+</body>
+</html>
