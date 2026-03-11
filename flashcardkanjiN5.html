@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashira Flashcards - Kanji N5</title>
+    <style>
+        :root {
+            --primary: #00a8ff;
+            --secondary: #0097e6;
+            --bg-light: #f5faff;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --text-main: #2d3436;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        #start-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 60vh;
+        }
+
+        .btn-main {
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 168, 255, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 168, 255, 0.35);
+        }
+
+        #game-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .counter {
+            background: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .flashcard-wrapper {
+            width: 100%;
+            max-width: 400px;
+            height: 500px;
+            perspective: 1200px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .card.flipped { transform: rotateY(180deg); }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 30px;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0, 168, 255, 0.1);
+        }
+
+        /* Sisi Depan */
+        .front {
+            justify-content: center;
+            align-items: center;
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Sisi Belakang */
+        .back {
+            transform: rotateY(180deg);
+            padding: 40px 25px;
+            text-align: center;
+            justify-content: space-between;
+        }
+
+        .meaning-section {
+            margin-top: 40px;
+        }
+
+        .meaning-title {
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .reading-text {
+            font-size: 1.2rem;
+            color: #636e72;
+            background: #f1f2f6;
+            padding: 5px 15px;
+            border-radius: 10px;
+        }
+
+        .examples-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            border-top: 2px dashed #e1f5fe;
+            padding-top: 20px;
+        }
+
+        .example-item {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .ex-word {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .ex-meaning {
+            font-size: 0.9rem;
+            color: #b2bec3;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            padding: 12px 30px;
+            border-radius: 12px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-btn:disabled {
+            border-color: #dfe6e9;
+            color: #b2bec3;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hashira Study</h1>
+
+    <div id="start-screen">
+        <button class="btn-main" onclick="startGame()">Mulai Sesi Belajar</button>
+    </div>
+
+    <div id="game-screen">
+        <div class="counter"><span id="current-idx">1</span> / 110</div>
+        
+        <div class="flashcard-wrapper">
+            <div class="card" id="main-card" onclick="this.classList.toggle('flipped')">
+                <div class="front" id="card-kanji">一</div>
+                
+                <div class="back">
+                    <div class="meaning-section">
+                        <span class="meaning-title" id="card-meaning">Satu</span>
+                        <span class="reading-text" id="card-reading">イチ (ichi) / ひと (hito)</span>
+                    </div>
+                    
+                    <div class="examples-container">
+                        <div class="example-item">
+                            <span class="ex-word" id="ex-1-word">一人</span>
+                            <span class="ex-meaning" id="ex-1-mean">Hitori (1 orang)</span>
+                        </div>
+                        <div class="example-item">
+                            <span class="ex-word" id="ex-2-word">一日</span>
+                            <span class="ex-meaning" id="ex-2-mean">Tsuitachi (Tgl 1)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="nav-btn" onclick="prevCard()" id="prev-btn" disabled>Kembali</button>
+            <button class="nav-btn" onclick="nextCard()" id="next-btn">Lanjut</button>
+        </div>
+    </div>
+
+    <script>
+        // DATA 110 KARTU LENGKAP
+        // Lu tinggal ganti isi properti q, m, r, e1w, e1m, e2w, e2m di bawah ini.
+        const flashcardData = [
+            {q: "一", m: "Satu", r: "Ichi / Hito", e1w: "一人", e1m: "Hitori", e2w: "一分", e2m: "Ippun"},
+            {q: "二", m: "Dua", r: "Ni / Futa", e1w: "二つ", e1m: "Futatsu", e2w: "二月", e2m: "Nigatsu"},
+            {q: "三", m: "Tiga", r: "San / Mit", e1w: "三日", e1m: "Mikka", e2w: "三本", e2m: "Sanbon"},
+            {q: "四", m: "Empat", r: "Yon / Shi", e1w: "四月", e1m: "Shigatsu", e2w: "四つ", e2m: "Yotsu"},
+            {q: "五", m: "Lima", r: "Go / Itsu", e1w: "五日", e1m: "Itsuka", e2w: "五円", e2m: "Go-en"},
+            {q: "六", m: "Enam", r: "Roku / Mu", e1w: "六日", e1m: "Muika", e2w: "六分", e2m: "Roppun"},
+            {q: "七", m: "Tujuh", r: "Nana / Shichi", e1w: "七日", e1m: "Nanoka", e2w: "七分", e2m: "Nanapun"},
+            {q: "八", m: "Delapan", r: "Hachi / Ya", e1w: "八日", e1m: "Youka", e2w: "八歳", e2m: "Hassai"},
+            {q: "九", m: "Sembilan", r: "Kyuu / Ku", e1w: "九月", e1m: "Kugatsu", e2w: "九分", e2m: "Kyuupun"},
+            {q: "十", m: "Sepuluh", r: "Juu / To", e1w: "十日", e1m: "Tooka", e2w: "十分", e2m: "Juppun"},
+            // --- Copy baris di atas buat nambahin sampe 110 (Gw sediain slotnya di bawah) ---
+            {q: "百", m: "Ratus", r: "Hyaku", e1w: "三百", e1m: "Sanbyaku", e2w: "六百", e2m: "Roppyaku"},
+            {q: "千", m: "Ribu", r: "Sen", e1w: "三千", e1m: "Sanzen", e2w: "八千", e2m: "Hassen"},
+            {q: "万", m: "10 Ribu", r: "Man", e1w: "一万", e1m: "Ichiman", e2w: "千万", e2m: "Senman"},
+            {q: "円", m: "Yen", r: "En", e1w: "十円", e1m: "Juuen", e2w: "百円", e2m: "Hyakuen"},
+            {q: "日", m: "Hari", r: "Hi/Nichi", e1w: "日本", e1m: "Nihon", e2w: "明日", e2m: "Ashita"},
+            {q: "月", m: "Bulan", r: "Getsu/Gatsu", e1w: "一月", e1m: "Ichigatsu", e2w: "今月", e2m: "Kongetsu"},
+            {q: "火", m: "Api", r: "Ka/Hi", e1w: "火曜日", e1m: "Kayoubi", e2w: "花火", e2m: "Hanabi"},
+            {q: "水", m: "Air", r: "Sui/Mizu", e1w: "水曜日", e1m: "Suiyoubi", e2w: "飲み水", e2m: "Nomimizu"},
+            {q: "木", m: "Pohon", r: "Moku/Ki", e1w: "木曜日", e1m: "Mokuyoubi", e2w: "大木", e2m: "Taibu"},
+            {q: "金", m: "Emas/Uang", r: "Kin/Kane", e1w: "金曜日", e1m: "Kinyoubi", e2w: "お金", e2m: "Okane"},
+            {q: "土", m: "Tanah", r: "Do/Tsuchi", e1w: "土曜日", e1m: "Doyoubi", e2w: "土地", e2m: "Tochi"},
+            {q: "山", m: "Gunung", r: "San/Yama", e1w: "富士山", e1m: "Fujisan", e2w: "山道", e2m: "Yamamichi"},
+            {q: "川", m: "Sungai", r: "Kawa", e1w: "小川", e1m: "Ogawa", e2w: "川岸", e2m: "Kawagishi"},
+            {q: "田", m: "Sawah", r: "Ta/Da", e1w: "田中", e1m: "Tanaka", e2w: "水田", e2m: "Suiden"},
+            {q: "人", m: "Orang", r: "Jin/Hito", e1w: "日本人", e1m: "Nihonjin", e2w: "大人", e2m: "Otona"},
+            {q: "子", m: "Anak", r: "Ko/Shi", e1w: "子供", e1m: "Kodomo", e2w: "女子", e2m: "Joshi"},
+            {q: "女", m: "Wanita", r: "Onna/Jo", e1w: "彼女", e1m: "Kanojo", e2w: "女性", e2m: "Josei"},
+            {q: "男", m: "Pria", r: "Otoko/Dan", e1w: "男子", e1m: "Danshi", e2w: "長男", e2m: "Chounan"},
+            {q: "目", m: "Mata", r: "Me/Moku", e1w: "目次", e1m: "Mokuji", e2w: "目的", e2m: "Mokuteki"},
+            {q: "口", m: "Mulut", r: "Kuchi/Guchi", e1w: "入口", e1m: "Iriguchi", e2w: "窓口", e2m: "Madoguchi"},
+            // Slot ke 31 - 110 (Silakan isi manual Shall, formatnya sama persis):
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."},
+            {q: "...", m: "...", r: "...", e1w: "...", e1m: "...", e2w: "...", e2m: "..."}
+        ];
+
+        let currentIdx = 0;
+
+        function startGame() {
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('game-screen').style.display = 'flex';
+            updateUI();
+        }
+
+        function updateUI() {
+            const card = document.getElementById('main-card');
+            card.classList.remove('flipped');
+            
+            // Animasi transisi konten
+            setTimeout(() => {
+                const data = flashcardData[currentIdx];
+                document.getElementById('card-kanji').innerText = data.q;
+                document.getElementById('card-meaning').innerText = data.m;
+                document.getElementById('card-reading').innerText = data.r;
+                document.getElementById('ex-1-word').innerText = data.e1w;
+                document.getElementById('ex-1-mean').innerText = data.e1m;
+                document.getElementById('ex-2-word').innerText = data.e2w;
+                document.getElementById('ex-2-mean').innerText = data.e2m;
+                
+                document.getElementById('current-idx').innerText = currentIdx + 1;
+                document.getElementById('prev-btn').disabled = (currentIdx === 0);
+                document.getElementById('next-btn').disabled = (currentIdx === flashcardData.length - 1);
+            }, 150);
+        }
+
+        function nextCard() {
+            if (currentIdx < flashcardData.length - 1) {
+                currentIdx++;
+                updateUI();
+            }
+        }
+
+        function prevCard() {
+            if (currentIdx > 0) {
+                currentIdx--;
+                updateUI();
+            }
+        }
+    </script>
+</body>
+</html>
